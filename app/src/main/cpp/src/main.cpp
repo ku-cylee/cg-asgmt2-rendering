@@ -2,6 +2,7 @@
 
 void surfaceCreated(AAssetManager* aAssetManager) {
     // 1. Implement z-buffering
+    glEnable(GL_DEPTH_TEST);
 
     // 4. Implement alpha blending
 
