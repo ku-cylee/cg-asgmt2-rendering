@@ -29,17 +29,17 @@ void main() {
     vec3 refl = 2.0 * normal * dot(normal, light) - light;
     vec3 spec = pow(max(dot(refl, view), 0.0), matSh) * srcSpec * matSpec;
     vec3 ambi = srcAmbi * matAmbi;
-    color = diff + spec + ambi + matEmit;
+    vec3 lightedColor = diff + spec + ambi + matEmit;
 
     float alpha = 1.0f;
 
     // 4. Implement alpha blending
-    // if (blendState == 0)
-    //     alpha = ;
-    // if (blendState == 1)
-    //     alpha = ;
-    // if (blendState == 2)
-    //     alpha = ;
+    if (blendState == 0)
+        alpha = color.r;
+    if (blendState == 1)
+        alpha = color.g;
+    if (blendState == 2)
+        alpha = color.b;
 
-     fragColor = vec4(color, alpha);
+     fragColor = vec4(lightedColor, alpha);
 }

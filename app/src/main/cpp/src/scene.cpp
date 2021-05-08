@@ -51,6 +51,9 @@ void Scene::update(float deltaTime) {
 
     // 4. Implement alpha blending
     // Compute current alpha blending state and ssign it to uniform variable
+    GLint blendStateLocation = glGetUniformLocation(program->get(), "blendState");
+    glUniform1i(blendStateLocation, (int(time) % 6) / 2);
+    time += deltaTime;
 
     Scene::camera->update();
     Scene::light->update();
