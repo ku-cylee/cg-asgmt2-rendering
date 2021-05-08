@@ -30,7 +30,7 @@ void Scene::setup(AAssetManager* aAssetManager) {
     Scene::light->direction = vec3(0.0f, 0.6f, 1.0f);
 
     // 3. Change the texture to RGB texture
-    Scene::diffuse  = new Texture(Scene::program, 0, "textureDiff", texFlowerData, texFlowerSize);
+    Scene::diffuse  = new Texture(Scene::program, 0, "textureDiff", rgbTexels, rgbSize);
     Scene::material = new Material(Scene::program, diffuse);
     Scene::teapot = new Object(program, material, teapotVertices, teapotIndices);
 }
