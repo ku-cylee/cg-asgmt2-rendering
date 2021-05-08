@@ -14,7 +14,7 @@ out vec3 v_view;
 
 void main() {
     // 2. Implement Phong lighting
-    // v_view = ;
+    v_view = normalize(eyePos - position);
 
     v_normal = normalize(transpose(inverse(mat3(worldMat))) * normal);
     v_texCoord = texCoord;

@@ -21,7 +21,15 @@ void main() {
     vec3 color = texture(textureDiff, v_texCoord).rgb;
 
     // 2. Implement Phong lighting
-    // color = ;
+    vec3 normal = normalize(v_normal);
+    vec3 view = normalize(v_view);
+    vec3 light = normalize(lightDir);
+
+    vec3 diff = max(dot(normal, light), 0.0) * srcDiff * color;
+    vec3 refl = 2.0 * normal * dot(normal, light) - light;
+    vec3 spec = pow(max(dot(refl, view), 0.0), matSh) * srcSpec * matSpec;
+    vec3 ambi = srcAmbi * matAmbi;
+    color = diff + spec + ambi + matEmit;
 
     float alpha = 1.0f;
 

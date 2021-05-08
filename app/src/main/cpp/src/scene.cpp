@@ -45,7 +45,9 @@ void Scene::update(float deltaTime) {
     Scene::program->use();
 
     // 2. Implement Phong lighting
-    Scene::light->direction = vec3(0.0f, 0.6f, 1.0f);
+    Scene::light->direction = mat3(cos(deltaTime), 0.0f, sin(deltaTime),
+                                   0.0f, 1.0f, 0.0f,
+                                   -sin(deltaTime), 0, cos(deltaTime)) * Scene::light->direction;
 
     // 4. Implement alpha blending
     // Compute current alpha blending state and ssign it to uniform variable
